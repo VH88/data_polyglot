@@ -1,7 +1,11 @@
 # data_polyglot
 The goal of this project is to create a set of tools to help write API tests faster.
 
-## JSON
+List of tools:
+- [JSON Serializer](#json-serializer)
+- [Table Data](#tabledata-class)
+
+## JSON Serializer
 Create models for payload and response with fewer lines of code then alternative packages.
 Leverage the power of autocomplete to access variables. 
 C# does it with Newtonsoft, it's time we get a similar convenient way of serialization.
@@ -99,3 +103,40 @@ in responses that leads to breaking change in our automation framework.
 When this happens an error message will show exactly what and where a property broke.
 
 Errors in `custom_converter` will also raise a meaningful exception.
+
+## TableData class
+A wrapper around API response for the table content to be rendered on the front-end.
+Includes common table operations such as 'filter records by column name',
+'get column value by row index'.
+Your response would look something like this:
+
+    {
+        "page": 0,
+        "per_page": 50,
+        "table": [
+            {"name": "item1", "price": 1.99, "quantity": 10 },
+            {"name": "item2", "price": 2.99, "quantity": 5 },
+            {"name": "item3", "price": 3.99, "quantity": 7 },
+        ]
+    }
+
+In this case just pass down the table into the class during instantiation:
+
+    table = TableData(response.json()['table'])
+
+You can also use `TableData` class in conjunction with [Serializable class](#json-serializer).
+The example bellow demonstrates how to do that with the response example above: 
+
+    class TableResponseModel(Serializable):
+        page: int = Serializable.serialize('page')
+        per_page: int = Serializable.serialize('per_page')
+        table: TableData = Serializable.serialize('table', custom_converter=lambda j_arr: TableData(j_arr))
+
+Example how to use table data:
+    
+    table = TableData(response.json()['table'])
+    table = table.filter_by_column_name('type', 'food')
+    value = table.get_column_value_by_row_index(0, 'name')
+
+You can also extend `TableData` class and create methods to wrap column name, 
+so you don't have to hardcode strings in your tests.
