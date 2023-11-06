@@ -10,7 +10,7 @@ only-include = ["src/data_polyglot"]
 
 [project]
 name = "data_polyglot"
-version = "1.1.0"
+version = "1.1.1"
 authors = [
   { name="Vadim Harenco", email="vharenco@gmail.com" },
 ]
