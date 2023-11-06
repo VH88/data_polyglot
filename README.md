@@ -52,7 +52,7 @@ Example of custom_converter:
 Example of custom_converter:
 
     # Assuming the datetime sting has a pattern '%Y-%m-%d', parse the field and convert to datetime.
-    date: datetime = serialize('date', custom_converter=lambda date: date.strptime('%Y-%m-%d'))
+    date: datetime = serialize('date', custom_converter=lambda date: datetime.strptime(date, '%Y-%m-%d'))
 
 **NOTE!** `from_json` can process a `list` and return a list of serialized object, 
 BUT it doesn't hint that it's a list. Either do type hinting on returned value, 
