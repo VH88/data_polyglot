@@ -2,8 +2,8 @@
 
 ---
 
-## 1.2.4 (Released 2024-01-29)
-* Add `LocalStorage` class for saving data locally into JSON file
+## 1.2.5 (Released 2024-01-29)
+* Add `LocalStorage` class for saving data locally into the JSON file
 ---
 
 ## 1.1.1 (Released 2023-11-06)
