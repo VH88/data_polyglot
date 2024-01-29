@@ -20,7 +20,7 @@ jobs:
           pipenv install --dev
       - name: Build dist
         run: |
-          pipenv run python build
+          pipenv run python -m build
 
       - name: Publish package
         uses: pypa/gh-action-pypi-publish@release/v1
