@@ -10,6 +10,9 @@ from src.data_polyglot import LocalStorage
 FILE_PATH = os.path.dirname(__file__)
 TEMP_TEST_DATA_PATH = os.path.join(FILE_PATH, 'temp_test_data')
 
+if not os.path.exists(TEMP_TEST_DATA_PATH):
+    os.makedirs(TEMP_TEST_DATA_PATH)
+
 
 class LocalStorageMock(LocalStorage):
     def __init__(self, file_path):
