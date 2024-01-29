@@ -155,6 +155,7 @@ To start:
 - Save simple data types, dictionaries, and lists using `create` method.
 - Read data in the specified path using `read` method.
 
+Example:
 
     file_path = os.path.dirname(os.path.abspath(__file__))
 
