@@ -5,10 +5,10 @@ import string
 
 import pytest
 
-from src.data_polyglot.storage.local_storage import LocalStorage
+from src.data_polyglot import LocalStorage
 
 FILE_PATH = os.path.dirname(__file__)
-TEMP_TEST_DATA_PATH = os.path.join(FILE_PATH, 'temp_test_data')
+TEMP_TEST_DATA_PATH = os.path.join(FILE_PATH, 'storage/temp_test_data')
 
 if not os.path.exists(TEMP_TEST_DATA_PATH):
     os.makedirs(TEMP_TEST_DATA_PATH)
