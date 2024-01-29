@@ -5,7 +5,7 @@ import string
 
 import pytest
 
-from src.data_polyglot import LocalStorage
+from src.data_polyglot.storage.local_storage import LocalStorage
 
 FILE_PATH = os.path.dirname(__file__)
 TEMP_TEST_DATA_PATH = os.path.join(FILE_PATH, 'temp_test_data')
