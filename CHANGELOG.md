@@ -2,6 +2,10 @@
 
 ---
 
+## 1.2.0 (Released 2024-01-29)
+* Add LocalStorage class for saving data locally into JSON file
+---
+
 ## 1.1.1 (Released 2023-11-06)
 * fix datetime conversion example in README.md
 ---
