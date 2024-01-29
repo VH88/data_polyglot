@@ -2,7 +2,7 @@
 
 ---
 
-## 1.2.0 (Released 2024-01-29)
+## 1.2.1 (Released 2024-01-29)
 * Add LocalStorage class for saving data locally into JSON file
 ---
 
