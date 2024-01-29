@@ -4,6 +4,7 @@ The goal of this project is to create a set of tools to help write API tests fas
 List of tools:
 - [JSON Serializer](#json-serializer)
 - [Table Data](#tabledata-class)
+- [Local Storage](#local-storage)
 
 ## JSON Serializer
 Create models for payload and response with fewer lines of code then alternative packages.
@@ -140,3 +141,27 @@ Example how to use table data:
 
 You can also extend `TableData` class and create methods to wrap column name, 
 so you don't have to hardcode strings in your tests.
+
+
+## Local Storage
+Store your test data locally in a JSON file using `LocalStorage` class.
+Useful when connecting data seeding scripts with test running scripts. 
+Create, read, update and delete data as if it was an external microservice, providing path to data as an endpoint. 
+In case the project ever grows to have the need for an external microservice to store test data - 
+it would be a fast transition.
+
+To start:
+- Initialize local storage by providing the file path. If file doesn't exist, new file will be created.
+- Save simple data types, dictionaries, and lists using `create` method.
+- Read data in the specified path using `read` method.
+
+
+    file_path = os.path.dirname(os.path.abspath(__file__))
+
+    storage = LocalStorage(file_path)
+    storage.create('/inventory/item_1/name', 'Do not delete!')
+    item_name = storage.read('/inventory/item_1/name')
+
+    storage.update('/inventory/item_1/name', 'Do not delete 1!')
+    exists = storage.is_key_present('/inventory/item_1/name')
+    storage.delete('/inventory/item_1/name')
